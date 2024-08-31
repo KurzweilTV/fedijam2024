@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://65ceiwd41hah"]
+
+[ext_resource type="PackedScene" path="res://scenes/menus/options_menu/mini_options_menu.tscn" id="1_xioop"]
+[ext_resource type="Script" path="res://scenes/menus/options_menu/mini_options_menu_with_reset.gd" id="2_0jppt"]
+[ext_resource type="PackedScene" path="res://scenes/menus/options_menu/game/reset_game_control/reset_game_control.tscn" id="3_vocig"]
+
+[node name="MiniOptionsMenu" instance=ExtResource("1_xioop")]
+script = ExtResource("2_0jppt")
+
+[node name="ResetGameControl" parent="." index="3" instance=ExtResource("3_vocig")]
+layout_mode = 2
+
+[connection signal="reset_confirmed" from="ResetGameControl" to="." method="_on_reset_game_control_reset_confirmed"]

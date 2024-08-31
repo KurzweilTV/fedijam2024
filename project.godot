@@ -12,13 +12,31 @@ config_version=5
 
 config/name="FediJam"
 config/version="0.1"
+config/tags=PackedStringArray("gamejam")
+run/main_scene="res://scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AppConfig="*res://addons/maaacks_game_template/base/scenes/autoloads/app_config.tscn"
+SceneLoader="*res://addons/maaacks_game_template/base/scenes/autoloads/scene_loader.tscn"
+ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_music_controller.tscn"
+ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=800
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+
+[maaacks_game_template]
+
+disable_plugin_dialogues=true
+copy_path="res://"
 
 [rendering]
 
