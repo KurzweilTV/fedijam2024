@@ -15,7 +15,6 @@ script = ExtResource("1_130ad")
 next_scene = ExtResource("2_cpasa")
 
 [node name="Background" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,5 +36,5 @@ offset_bottom = 449.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("1_iajlq")
-volume_db = -10.0
+volume_db = -15.0
 expand = true

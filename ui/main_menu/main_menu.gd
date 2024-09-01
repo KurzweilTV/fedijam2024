@@ -4,8 +4,6 @@ extends Control
 @onready var click: AudioStreamPlayer = $MenuSounds/Click
 @onready var hover: AudioStreamPlayer = $MenuSounds/Hover
 
-
-
 func play_hover():
 	hover.play()
 

@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=14 format=3 uid="uid://bm4coof7xuoxa"]
 
 [ext_resource type="StyleBox" uid="uid://bxll3uke2qmu2" path="res://ui/themes/stylebox_hover.tres" id="1_40pp6"]
-[ext_resource type="FontFile" uid="uid://cqtt8p5u7sudq" path="res://fonts/Kenney/Kenney Future.ttf" id="1_pueiy"]
+[ext_resource type="FontFile" uid="uid://cqtt8p5u7sudq" path="res://assets/fonts/Kenney/Kenney Future.ttf" id="1_pueiy"]
 [ext_resource type="StyleBox" uid="uid://phcp7045pddx" path="res://ui/themes/cheerful-styleboxflat.tres" id="2_4s041"]
 [ext_resource type="Texture2D" uid="uid://tawwqen62ps3" path="res://ui/art/grabber.png" id="2_d4630"]
 [ext_resource type="Texture2D" uid="uid://cylpmpn7yf6ge" path="res://ui/art/grabberHighlight.png" id="3_2m5c3"]

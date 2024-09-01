@@ -9,8 +9,8 @@ extends Control
 @onready var sfx_bus := AudioServer.get_bus_index("SFX")
 
 @export var master_value:float = 0.8
-@export var music_value:float = 0.3
-@export var sfx_value:float = 0.7
+@export var music_value:float = 0.5
+@export var sfx_value:float = 0.5
 
 
 func _ready() -> void:
@@ -21,8 +21,6 @@ func _ready() -> void:
 	master_value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))
 	music_value = db_to_linear(AudioServer.get_bus_volume_db(music_bus))
 	sfx_value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
-
-
 
 
 func _on_master_value_changed(value: float) -> void:
