@@ -1,0 +1,181 @@
+[gd_scene load_steps=6 format=3 uid="uid://v8ofk5aftia"]
+
+[ext_resource type="Theme" uid="uid://bm4coof7xuoxa" path="res://ui/themes/cheerful.tres" id="1_yqyfh"]
+[ext_resource type="Script" path="res://ui/main_menu/options_screen.gd" id="2_fpxky"]
+[ext_resource type="AudioStream" uid="uid://r6jgnws3dlfq" path="res://ui/sounds/switch8.ogg" id="3_vc2w4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_27d5f"]
+font_size = 66
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7jt6"]
+bg_color = Color(0.651957, 0.397703, 0.151271, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 5)
+
+[node name="OptionsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqyfh")
+script = ExtResource("2_fpxky")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -338.0
+offset_right = 540.0
+offset_bottom = 338.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_27d5f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterVol" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/MasterVol"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7jt6")
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MasterVol"]
+layout_mode = 2
+
+[node name="MasterVolLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MasterVol/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+horizontal_alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MasterVol/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/MasterVol/HBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="MuiscVol" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/MuiscVol"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7jt6")
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MuiscVol"]
+layout_mode = 2
+
+[node name="MusicVolLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MuiscVol/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+horizontal_alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MuiscVol/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/MuiscVol/HBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="SFXVol" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVol"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7jt6")
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVol"]
+layout_mode = 2
+
+[node name="MusicVolLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVol/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+text = "SFX Volume"
+horizontal_alignment = 2
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVol/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVol/HBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vc2w4")
+max_polyphony = 10
+bus = &"SFX"
+
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MasterVol/HBox/MasterSlider" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MuiscVol/HBox/MusicSlider" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/SFXVol/HBox/SFXSlider" to="." method="_on_sfx_value_changed"]

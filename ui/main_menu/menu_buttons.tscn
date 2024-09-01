@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbt62k38xlh86"]
+
+[ext_resource type="Theme" uid="uid://bm4coof7xuoxa" path="res://ui/themes/cheerful.tres" id="1_brxu8"]
+
+[node name="MenuPanel" type="PanelContainer"]
+offset_right = 720.0
+offset_bottom = 112.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_brxu8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 3.42
+mouse_default_cursor_shape = 2
+theme_override_constants/separation = 50
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_neighbor_right = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+mouse_default_cursor_shape = 2
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../StartButton")
+mouse_default_cursor_shape = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+focus_neighbor_left = NodePath("../OptionsButton")
+focus_previous = NodePath("../OptionsButton")
+mouse_default_cursor_shape = 2
+text = "Quit"

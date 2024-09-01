@@ -1,0 +1,75 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bm4coof7xuoxa"]
+
+[ext_resource type="StyleBox" uid="uid://bxll3uke2qmu2" path="res://ui/themes/stylebox_hover.tres" id="1_40pp6"]
+[ext_resource type="FontFile" uid="uid://cqtt8p5u7sudq" path="res://fonts/Kenney/Kenney Future.ttf" id="1_pueiy"]
+[ext_resource type="StyleBox" uid="uid://phcp7045pddx" path="res://ui/themes/cheerful-styleboxflat.tres" id="2_4s041"]
+[ext_resource type="Texture2D" uid="uid://tawwqen62ps3" path="res://ui/art/grabber.png" id="2_d4630"]
+[ext_resource type="Texture2D" uid="uid://cylpmpn7yf6ge" path="res://ui/art/grabberHighlight.png" id="3_2m5c3"]
+[ext_resource type="StyleBox" uid="uid://c4nqyphru47s5" path="res://ui/themes/stylebox_pressed.tres" id="3_tvwfd"]
+[ext_resource type="StyleBox" uid="uid://duaoxbr5sr5rk" path="res://ui/themes/blue_panel.tres" id="7_3k8aq"]
+[ext_resource type="StyleBox" uid="uid://bssl4f4rp2014" path="res://ui/themes/slider.tres" id="7_5jioj"]
+[ext_resource type="StyleBox" uid="uid://bl7e256ntpr32" path="res://ui/themes/grabberarea.tres" id="7_swnv3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cs76y"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.8, 0.235467, 0.216, 1)
+border_width_bottom = 8
+border_color = Color(0.442852, 0.103163, 0.0942809, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 8
+shadow_offset = Vector2(4, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dylx5"]
+bg_color = Color(2.5028e-06, 0.718251, 0.388655, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vddkh"]
+bg_color = Color(0, 0.221667, 0.35, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.651957, 0.397703, 0.151271, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2h1st"]
+bg_color = Color(0, 0.58, 0.309333, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+default_font = ExtResource("1_pueiy")
+default_font_size = 16
+Button/font_sizes/font_size = 21
+Button/fonts/font = ExtResource("1_pueiy")
+Button/styles/hover = ExtResource("1_40pp6")
+Button/styles/normal = ExtResource("2_4s041")
+Button/styles/pressed = ExtResource("3_tvwfd")
+Cancel/base_type = &"Button"
+Cancel/styles/normal = SubResource("StyleBoxFlat_cs76y")
+HSlider/icons/grabber = ExtResource("2_d4630")
+HSlider/icons/grabber_highlight = ExtResource("3_2m5c3")
+HSlider/styles/grabber_area = ExtResource("7_swnv3")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_dylx5")
+HSlider/styles/slider = ExtResource("7_5jioj")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxFlat_vddkh")
+PanelContainer/styles/panel = ExtResource("7_3k8aq")
+ProgressBar/font_sizes/font_size = 21
+ProgressBar/fonts/font = ExtResource("1_pueiy")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_2h1st")
+VSlider/icons/grabber = null
+VSlider/icons/grabber_highlight = null
+VSlider/icons/tick = null
