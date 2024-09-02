@@ -5,16 +5,24 @@ extends CharacterBody2D
 @export_range(-1000, -400, 10) var jump_power = -600.0
 @export var total_jumps:int = 2
 @export_range(0, 1, .1) var cowboy_timer:float = 0.2
+@export var spawning:bool
+
+@onready var animator: AnimationPlayer = $Animator
 
 var jumps_remaining:int
 
+
 func _ready() -> void:
+	spawning = true
 	jumps_remaining = total_jumps
+	animator.play("spawn")
 
 func _process(_delta: float) -> void:
-	$Label.text = "Jumps: " + str(jumps_remaining) # Just for debug
+	$DebugLabel.text = "Jumps: " + str(jumps_remaining) # Just for debug
 
 func _physics_process(delta: float) -> void:
+	if spawning:
+		return
 	if not is_on_floor(): # gravity and load the double jump
 		add_gravity(delta)
 	else:

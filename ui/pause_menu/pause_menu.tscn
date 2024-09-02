@@ -12,6 +12,7 @@ shader_parameter/mix_percentage = 0.3
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
+process_priority = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dev7wnrwpvh2t"]
+[gd_scene load_steps=4 format=4 uid="uid://dev7wnrwpvh2t"]
 
 [ext_resource type="TileSet" uid="uid://ckrrgolceu4lu" path="res://scenes/levels/prototype_tiletset.tres" id="1_u4j8f"]
 [ext_resource type="PackedScene" uid="uid://dy66pegogn5wu" path="res://actors/player/Player.tscn" id="2_0g1ys"]
+[ext_resource type="PackedScene" uid="uid://chkl31jvfwr6t" path="res://actors/platforms/moving_platform.tscn" id="3_afjh2"]
 
 [node name="Prototype" type="Node2D"]
 
@@ -11,3 +12,14 @@ tile_set = ExtResource("1_u4j8f")
 
 [node name="Player" parent="." instance=ExtResource("2_0g1ys")]
 position = Vector2(128, 737)
+speed = 400.0
+jump_power = -600.0
+total_jumps = 2
+cowboy_timer = 0.2
+
+[node name="MovingPlatform" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("3_afjh2")]
+position = Vector2(-173, 659)
+endpoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="MovingPlatform"]
+position = Vector2(-4, -407)
