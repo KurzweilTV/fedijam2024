@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://i460doofu8ra"]
+[gd_scene load_steps=17 format=3 uid="uid://i460doofu8ra"]
 
 [ext_resource type="Theme" uid="uid://bm4coof7xuoxa" path="res://ui/themes/cheerful.tres" id="1_iqhwg"]
 [ext_resource type="PackedScene" uid="uid://dbt62k38xlh86" path="res://ui/main_menu/menu_buttons.tscn" id="2_2fvvs"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="2_m5tbp"]
 [ext_resource type="Texture2D" uid="uid://up66cfwhrcj0" path="res://ui/main_menu/title_logo.jpg" id="2_nx5st"]
+[ext_resource type="PackedScene" uid="uid://dev7wnrwpvh2t" path="res://scenes/levels/prototype.tscn" id="3_b6yca"]
 [ext_resource type="PackedScene" uid="uid://v8ofk5aftia" path="res://ui/main_menu/options_screen.tscn" id="4_doaxe"]
 [ext_resource type="AudioStream" uid="uid://r6jgnws3dlfq" path="res://ui/sounds/switch8.ogg" id="6_d8fh5"]
 [ext_resource type="AudioStream" uid="uid://cfq6tjypuo31m" path="res://ui/sounds/OrchAmbient.mp3" id="7_dkxxa"]
@@ -115,6 +116,31 @@ _data = {
 "fade_animation": SubResource("Animation_1c5rf")
 }
 
+[sub_resource type="Animation" id="Animation_ygvve"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1800, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(400, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_o4ks4"]
 resource_name = "options_slide_in"
 length = 0.5
@@ -141,31 +167,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
-[sub_resource type="Animation" id="Animation_ygvve"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1800, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(400, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m1cdh"]
 _data = {
 "RESET": SubResource("Animation_ygvve"),
@@ -181,6 +182,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_iqhwg")
 script = ExtResource("2_m5tbp")
+first_level = ExtResource("3_b6yca")
 
 [node name="CloudBG" type="TextureRect" parent="."]
 layout_mode = 1

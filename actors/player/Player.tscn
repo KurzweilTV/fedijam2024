@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy66pegogn5wu"]
+
+[ext_resource type="Texture2D" uid="uid://cfqde5hcgyf2u" path="res://actors/player/art/prototype.png" id="1_72js3"]
+[ext_resource type="Script" path="res://actors/player/player.gd" id="1_n0l2w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4oaa"]
+radius = 21.0
+height = 62.0
+
+[node name="Player" type="CharacterBody2D"]
+platform_on_leave = 1
+script = ExtResource("1_n0l2w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_72js3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_q4oaa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 815
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.4
+drag_bottom_margin = 0.1
+editor_draw_drag_margin = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.0
+offset_top = -68.0
+offset_right = 44.0
+offset_bottom = -45.0
+text = "Sample Text"

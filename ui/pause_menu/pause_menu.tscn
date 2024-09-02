@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://cj3b6yqov3v4n"]
+
+[ext_resource type="Theme" uid="uid://bm4coof7xuoxa" path="res://ui/themes/cheerful.tres" id="1_lo2ec"]
+[ext_resource type="Shader" path="res://ui/shaders/background_fader.gdshader" id="2_4antm"]
+[ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="2_5txlg"]
+[ext_resource type="Texture2D" uid="uid://bbywbnl5uqrnd" path="res://icon.svg" id="2_uerve"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb6ju"]
+shader = ExtResource("2_4antm")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.3
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lo2ec")
+script = ExtResource("2_5txlg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Fader" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_pb6ju")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uerve")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -71.5
+offset_right = 243.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lo2ec")
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel"]
+layout_mode = 2
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Continue"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
