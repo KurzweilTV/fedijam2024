@@ -1,14 +1,18 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ckrrgolceu4lu"]
 
-[ext_resource type="Texture2D" uid="uid://7bklo51ewq0y" path="res://art/level/cloud-mid.png" id="1_k5tnp"]
+[ext_resource type="Texture2D" uid="uid://oj56dfyqal2e" path="res://art/level/cloud-sheet.png" id="1_y2txx"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4w548"]
-texture = ExtResource("1_k5tnp")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bj0e8"]
+texture = ExtResource("1_y2txx")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -23.5, 32, -24, 32, 20, -32, 21)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-22, -24, 32, -22.5, 32, 32, -20, 32, -28, 21.5, -32, -11)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -22, 32, -22.5, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -22, 21, -21.5, 32, -13.5, 32, 21.5, 22, 32, -32, 32)
 
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_4w548")
+sources/1 = SubResource("TileSetAtlasSource_bj0e8")
