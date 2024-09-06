@@ -1,9 +1,13 @@
-[gd_scene load_steps=38 format=3 uid="uid://dy66pegogn5wu"]
+[gd_scene load_steps=39 format=3 uid="uid://dy66pegogn5wu"]
 
-[ext_resource type="Script" path="res://actors/player/player.gd" id="1_n0l2w"]
+[ext_resource type="Script" path="res://actors/player/player_controller.gd" id="1_n0l2w"]
 [ext_resource type="Texture2D" uid="uid://i8vj8qrcuu2a" path="res://actors/player/art/player _sheet.png" id="2_h8vxf"]
 [ext_resource type="Texture2D" uid="uid://bm7gwbkbbd5mo" path="res://actors/player/art/whitePuff00.png" id="3_20qx5"]
 [ext_resource type="PackedScene" uid="uid://c2uqpvybqp3nm" path="res://actors/player/jump_effect.tscn" id="4_1tkpy"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tm7au"]
+cull_mode = 1
+polygon = PackedVector2Array(-29.6585, -38.4, -49.9512, -32, -60.878, -16, -54.6341, -4.8, -62.439, 9.6, -56.1951, 17.6, -56.1951, 25.6, -46.8293, 41.6, 45.2683, 43.2, 54.6341, 27.2, 62.439, 3.2, 54.6341, -8, 59.3171, -11.2, 56.1951, -24, 48.3902, -33.6, 34.3415, -40)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4oaa"]
 radius = 41.0
@@ -316,6 +320,12 @@ position = Vector2(0, -5)
 texture = ExtResource("2_h8vxf")
 hframes = 4
 vframes = 2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+show_behind_parent = true
+position = Vector2(0, 5)
+scale = Vector2(1, 1)
+occluder = SubResource("OccluderPolygon2D_tm7au")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

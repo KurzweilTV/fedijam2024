@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("jump") and velocity.y > 0: #floating
 		velocity.y = lerp(velocity.y, 10.0, delta * 5)
 		float_effect.emitting = true
+		Player.water -= delta
 	else:
 		float_effect.emitting = false
 	var direction := Input.get_axis("move_left", "move_right")

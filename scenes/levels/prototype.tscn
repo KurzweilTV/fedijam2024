@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dev7wnrwpvh2t"]
+[gd_scene load_steps=10 format=4 uid="uid://dev7wnrwpvh2t"]
 
 [ext_resource type="TileSet" uid="uid://ckrrgolceu4lu" path="res://scenes/levels/prototype_tiletset.tres" id="1_u4j8f"]
 [ext_resource type="PackedScene" uid="uid://dy66pegogn5wu" path="res://actors/player/Player.tscn" id="2_0g1ys"]
@@ -13,6 +13,14 @@ colors = PackedColorArray(0.462291, 0.462291, 0.462291, 1, 0.682299, 0.76975, 0.
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_eqx07"]
 gradient = SubResource("Gradient_gtc1p")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fwdb7"]
+resource_name = "Pickups"
+scenes/1/scene = ExtResource("5_3wfmk")
+
+[sub_resource type="TileSet" id="TileSet_2xlkd"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_fwdb7")
+
 [node name="Prototype" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -26,13 +34,22 @@ offset_right = 2017.0
 offset_bottom = 1206.0
 rotation = 1.57079
 texture = SubResource("GradientTexture1D_eqx07")
+metadata/_edit_lock_ = true
 
-[node name="Clouds" type="TileMapLayer" parent="."]
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Clouds" type="TileMapLayer" parent="Tiles"]
 tile_map_data = PackedByteArray("AAAAAAwAAQABAAAAAAABAAwAAQABAAAAAAACAAwAAQABAAAAAAADAAwAAQABAAAAAAAEAAwAAQABAAAAAAAFAAwAAQABAAAAAAAGAAwAAQABAAAAAAAHAAwAAQABAAAAAAAIAAwAAQABAAAAAAAJAAwAAQABAAAAAAAKAAwAAQABAAAAAAALAAwAAQABAAAAAAAMAAwAAQABAAAAAAANAAwAAQABAAAAAAAOAAwAAQABAAAAAAAPAAwAAQABAAAAAAAQAAwAAQABAAAAAAARAAwAAQABAAAAAAASAAwAAQABAAAAAAAIAAkAAQAAAAAAAAAJAAkAAQABAAAAAAAKAAkAAQABAAAAAAALAAkAAQABAAAAAAAMAAkAAQABAAAAAAANAAkAAQABAAAAAAAOAAkAAQACAAAAAAAGAAUAAQACAAAAAAADAAUAAQABAAAAAAACAAUAAQAAAAAAAAAEAAUAAQABAAAAAAAFAAUAAQABAAAAAAAMAAIAAQAAAAAAAAANAAIAAQABAAAAAAAOAAIAAQABAAAAAAAPAAIAAQABAAAAAAAQAAIAAQABAAAAAAARAAIAAQABAAAAAAASAAIAAQABAAAAAAATAAIAAQABAAAAAAAUAAIAAQACAAAAAAATAAwAAQABAAAAAAAUAAwAAQABAAAAAAAVAAwAAQABAAAAAAAWAAwAAQABAAAAAAAXAAwAAQABAAAAAAAYAAwAAQABAAAAAAAZAAwAAQABAAAAAAAaAAwAAQABAAAAAAAbAAwAAQABAAAAAAAcAAwAAQABAAAAAAAdAAwAAQABAAAAAAAeAAwAAQABAAAAAAD//wwAAQABAAAAAAD+/wwAAQABAAAAAAD9/wwAAQABAAAAAAD8/wwAAQABAAAAAAD7/wwAAQABAAAAAAD6/wwAAQABAAAAAAD5/wwAAQABAAAAAAD4/wwAAQABAAAAAAAfAAwAAQABAAAAAAAgAAwAAQABAAAAAAAhAAwAAQABAAAAAAAiAAwAAQABAAAAAAAjAAwAAQABAAAAAAAkAAwAAQABAAAAAAAlAAwAAQABAAAAAAAmAAwAAQABAAAAAAAnAAwAAQABAAAAAAAoAAwAAQABAAAAAAApAAwAAQABAAAAAAAqAAwAAQABAAAAAAArAAwAAQABAAAAAAD3/wwAAQABAAAAAAD2/wwAAQABAAAAAAD1/wwAAQABAAAAAAD0/wwAAQABAAAAAADz/wwAAQABAAAAAADy/wwAAQABAAAAAADx/wwAAQABAAAAAADw/wwAAQABAAAAAADv/wwAAQABAAAAAADu/wwAAQABAAAAAADt/wwAAQABAAAAAADs/wwAAQABAAAAAADr/wwAAQABAAAAAADq/wwAAQABAAAAAAA=")
 tile_set = ExtResource("1_u4j8f")
 
+[node name="Pickups" type="TileMapLayer" parent="Tiles"]
+position = Vector2(115, 1)
+tile_map_data = PackedByteArray("AAAbACIAAAAAAAAAAQAAAAQAAAAAAAAAAQAJAAgAAAAAAAAAAQAKAAgAAAAAAAAAAQALAAgAAAAAAAAAAQAMAAgAAAAAAAAAAQABAAQAAAAAAAAAAQARAAEAAAAAAAAAAQAQAAEAAAAAAAAAAQASAAEAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_2xlkd")
+
 [node name="Player" parent="." instance=ExtResource("2_0g1ys")]
 position = Vector2(128, 737)
+floor_stop_on_slope = false
 
 [node name="MovingPlatform" parent="." node_paths=PackedStringArray("endpoint") instance=ExtResource("3_afjh2")]
 position = Vector2(-173, 659)
@@ -43,17 +60,26 @@ position = Vector2(-4, -407)
 
 [node name="Ui" parent="." instance=ExtResource("4_4fsfq")]
 
-[node name="WaterPickup" parent="." instance=ExtResource("5_3wfmk")]
-position = Vector2(565, 548)
+[node name="Environment" type="CanvasModulate" parent="."]
+color = Color(0.788235, 0.788235, 0.788235, 1)
 
-[node name="WaterPickup2" parent="." instance=ExtResource("5_3wfmk")]
-position = Vector2(653, 548)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Environment"]
+position = Vector2(1993, -218)
+rotation = 0.991519
+color = Color(1, 1, 0.564706, 1)
+energy = 0.2
+shadow_color = Color(0.0117647, 0.223529, 0.34902, 0.129412)
+shadow_filter = 1
+height = 0.77
+max_distance = 200.0
 
-[node name="WaterPickup3" parent="." instance=ExtResource("5_3wfmk")]
-position = Vector2(755, 548)
-
-[node name="WaterPickup4" parent="." instance=ExtResource("5_3wfmk")]
-position = Vector2(864, 548)
-
-[node name="WaterPickup5" parent="." instance=ExtResource("5_3wfmk")]
-position = Vector2(978, 548)
+[connection signal="body_entered" from="Tiles/Pickups/WaterPickup" to="Tiles/Pickups/WaterPickup" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81939" to="Tiles/Pickups/@Area2D@81939" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81940" to="Tiles/Pickups/@Area2D@81940" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81941" to="Tiles/Pickups/@Area2D@81941" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81942" to="Tiles/Pickups/@Area2D@81942" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81943" to="Tiles/Pickups/@Area2D@81943" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81944" to="Tiles/Pickups/@Area2D@81944" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81945" to="Tiles/Pickups/@Area2D@81945" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81946" to="Tiles/Pickups/@Area2D@81946" method="_on_body_entered"]
+[connection signal="body_entered" from="Tiles/Pickups/@Area2D@81947" to="Tiles/Pickups/@Area2D@81947" method="_on_body_entered"]

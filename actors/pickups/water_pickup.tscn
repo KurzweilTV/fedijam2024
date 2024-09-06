@@ -1,19 +1,73 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvxpe4og7ohkm"]
+[gd_scene load_steps=9 format=3 uid="uid://bvxpe4og7ohkm"]
 
 [ext_resource type="Script" path="res://actors/pickups/water_pickup.gd" id="1_131t0"]
 [ext_resource type="Texture2D" uid="uid://n5wa7lxxifyl" path="res://actors/pickups/waterdrop.png" id="1_a64p8"]
+[ext_resource type="Shader" path="res://actors/pickups/highlight.gdshader" id="2_uu7mx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqux6"]
+shader = ExtResource("2_uu7mx")
+shader_parameter/size_effect = 0.5
+shader_parameter/speed = 0.8
+shader_parameter/highlight_strength = 0.2
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p33co"]
 radius = 25.0799
 
+[sub_resource type="Animation" id="Animation_eu347"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y38gv"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_601nj"]
+_data = {
+"RESET": SubResource("Animation_eu347"),
+"float": SubResource("Animation_y38gv")
+}
+
 [node name="WaterPickup" type="Area2D"]
+audio_bus_name = &"SFX"
 script = ExtResource("1_131t0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5)
+material = SubResource("ShaderMaterial_dqux6")
 texture = ExtResource("1_a64p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p33co")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_601nj")
+}
+autoplay = "float"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
