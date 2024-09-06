@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2wvc7742u5fn"]
+
+[ext_resource type="Texture2D" uid="uid://be1urj13uxpp1" path="res://ui/player/HeroFrame-Mask.png" id="1_5u7ma"]
+[ext_resource type="Texture2D" uid="uid://i8vj8qrcuu2a" path="res://actors/player/art/player _sheet.png" id="1_hnvqh"]
+[ext_resource type="Script" path="res://ui/player/player_ui.gd" id="1_wkx0q"]
+[ext_resource type="Theme" uid="uid://bm4coof7xuoxa" path="res://ui/themes/cheerful.tres" id="2_ccu81"]
+[ext_resource type="Texture2D" uid="uid://bhpvuic5rlgr" path="res://ui/player/HeroFrame-background.png" id="3_ehqb1"]
+[ext_resource type="Texture2D" uid="uid://biwi7inykf8e5" path="res://ui/player/HeroFrame.png" id="4_jmj6g"]
+[ext_resource type="Texture2D" uid="uid://cj0s3nmaujjt6" path="res://ui/player/HeroFrame-progress.png" id="5_xrxnj"]
+
+[sub_resource type="Animation" id="Animation_m0njw"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.640625, 0.625), Vector2(0.612, 0.706), Vector2(0.640625, 0.625)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8gkh"]
+_data = {
+"idle": SubResource("Animation_m0njw")
+}
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_wkx0q")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeroFrame-mask" type="Sprite2D" parent="Control"]
+clip_children = 1
+position = Vector2(262, 93)
+texture = ExtResource("1_5u7ma")
+
+[node name="Player" type="Sprite2D" parent="Control/HeroFrame-mask"]
+position = Vector2(-145, -5)
+scale = Vector2(0.640625, 0.625)
+texture = ExtResource("1_hnvqh")
+hframes = 4
+vframes = 2
+
+[node name="CharAnimator" type="AnimationPlayer" parent="Control/HeroFrame-mask/Player"]
+libraries = {
+"": SubResource("AnimationLibrary_j8gkh")
+}
+autoplay = "idle"
+speed_scale = 1.2
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Control"]
+unique_name_in_owner = true
+z_index = -1
+layout_mode = 0
+offset_left = 62.0
+offset_top = 43.0
+offset_right = 462.0
+offset_bottom = 143.0
+theme = ExtResource("2_ccu81")
+texture_under = ExtResource("3_ehqb1")
+texture_over = ExtResource("4_jmj6g")
+texture_progress = ExtResource("5_xrxnj")
+texture_progress_offset = Vector2(94, 0)

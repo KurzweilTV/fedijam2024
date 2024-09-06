@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvxpe4og7ohkm"]
+
+[ext_resource type="Script" path="res://actors/pickups/water_pickup.gd" id="1_131t0"]
+[ext_resource type="Texture2D" uid="uid://n5wa7lxxifyl" path="res://actors/pickups/waterdrop.png" id="1_a64p8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p33co"]
+radius = 25.0799
+
+[node name="WaterPickup" type="Area2D"]
+script = ExtResource("1_131t0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_a64p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p33co")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

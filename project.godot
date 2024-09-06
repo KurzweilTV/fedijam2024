@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://globals/GameManager.gd"
+Player="*res://globals/Player.gd"
 
 [display]
 
@@ -35,8 +36,13 @@ enabled=PackedStringArray()
 
 folder_colors={
 "res://actors/player/": "blue",
-"res://ui/": "green"
+"res://ui/": "green",
+"res://ui/player/": "blue"
 }
+
+[global_group]
+
+player=""
 
 [input]
 

@@ -1,8 +1,5 @@
 extends Node
 
-func _ready() -> void:
-	process_mode = PROCESS_MODE_ALWAYS
-
 var pause_scene:PackedScene = load("res://ui/pause_menu/pause_menu.tscn")
 var game_paused:bool = false
 

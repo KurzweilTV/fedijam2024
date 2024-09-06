@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://dev7wnrwpvh2t"]
+[gd_scene load_steps=8 format=4 uid="uid://dev7wnrwpvh2t"]
 
 [ext_resource type="TileSet" uid="uid://ckrrgolceu4lu" path="res://scenes/levels/prototype_tiletset.tres" id="1_u4j8f"]
 [ext_resource type="PackedScene" uid="uid://dy66pegogn5wu" path="res://actors/player/Player.tscn" id="2_0g1ys"]
 [ext_resource type="PackedScene" uid="uid://chkl31jvfwr6t" path="res://actors/platforms/moving_platform.tscn" id="3_afjh2"]
+[ext_resource type="PackedScene" uid="uid://b2wvc7742u5fn" path="res://ui/player/PlayerUI.tscn" id="4_4fsfq"]
+[ext_resource type="PackedScene" uid="uid://bvxpe4og7ohkm" path="res://actors/pickups/water_pickup.tscn" id="5_3wfmk"]
 
 [sub_resource type="Gradient" id="Gradient_gtc1p"]
 offsets = PackedFloat32Array(0, 0.110672, 1)
@@ -14,6 +16,7 @@ gradient = SubResource("Gradient_gtc1p")
 [node name="Prototype" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -100
 scroll_scale = Vector2(0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D"]
@@ -37,3 +40,20 @@ endpoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="MovingPlatform"]
 position = Vector2(-4, -407)
+
+[node name="Ui" parent="." instance=ExtResource("4_4fsfq")]
+
+[node name="WaterPickup" parent="." instance=ExtResource("5_3wfmk")]
+position = Vector2(565, 548)
+
+[node name="WaterPickup2" parent="." instance=ExtResource("5_3wfmk")]
+position = Vector2(653, 548)
+
+[node name="WaterPickup3" parent="." instance=ExtResource("5_3wfmk")]
+position = Vector2(755, 548)
+
+[node name="WaterPickup4" parent="." instance=ExtResource("5_3wfmk")]
+position = Vector2(864, 548)
+
+[node name="WaterPickup5" parent="." instance=ExtResource("5_3wfmk")]
+position = Vector2(978, 548)
