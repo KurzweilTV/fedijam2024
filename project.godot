@@ -30,7 +30,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/jamcountdown/plugin.cfg")
 
 [file_customization]
 
