@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var char_animator: AnimationPlayer = $CharAnimator
 @onready var float_effect: GPUParticles2D = %FloatEffect
 @onready var jump_effect:PackedScene = preload("res://actors/player/jump_effect.tscn")
+@onready var camera: Camera2D = $Camera2D
 
 var jumps_remaining:int
 
@@ -21,9 +22,13 @@ func _ready() -> void:
 	spawning = true
 	jumps_remaining = total_jumps
 	effect_animator.play("spawn")
+	camera.enabled = true
 
-func _process(_delta: float) -> void:
-	$DebugLabel.text = "Jumps: " + str(jumps_remaining) # Just for debug
+# DEBUG FUNCTION
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("debug_respawn"):
+		Messages.spawn_player.emit()
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	if spawning:
@@ -45,11 +50,12 @@ func _physics_process(delta: float) -> void:
 		
 	# Slow fall when holding jump and falling
 	if Input.is_action_pressed("jump") and velocity.y > 0: #floating
-		velocity.y = lerp(velocity.y, 10.0, delta * 5)
+		Player.water -= delta * 2
+		velocity.y = lerp(velocity.y, 50.0, delta * 5)
 		float_effect.emitting = true
-		Player.water -= delta
 	else:
 		float_effect.emitting = false
+
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		char_animator.play("walk")
@@ -87,4 +93,3 @@ func able_to_jump() -> bool:
 
 func add_gravity(delta) -> void:
 	velocity += get_gravity() * delta
-	

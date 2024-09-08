@@ -28,10 +28,10 @@ turbulence_noise_scale = 4.797
 [node name="JumpEffect" type="GPUParticles2D"]
 position = Vector2(0, 51.2)
 emitting = false
-amount = 20
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_xyegy")
 texture = ExtResource("1_82hqo")
-lifetime = 1.5
+lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
 script = ExtResource("2_sfaca")

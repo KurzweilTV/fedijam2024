@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func update_ui(amount: int) -> void:
 	var tween = create_tween()
-	tween.tween_property(progress_bar, "value", amount, 0.5).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(progress_bar, "value", amount, 0.2)

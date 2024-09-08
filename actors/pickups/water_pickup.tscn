@@ -13,7 +13,7 @@ shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p33co"]
-radius = 25.0799
+radius = 20.0998
 
 [sub_resource type="Animation" id="Animation_eu347"]
 length = 0.001
@@ -62,6 +62,7 @@ material = SubResource("ShaderMaterial_dqux6")
 texture = ExtResource("1_a64p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_p33co")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

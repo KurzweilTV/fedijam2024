@@ -1,8 +1,14 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ckrrgolceu4lu"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ckrrgolceu4lu"]
 
 [ext_resource type="Texture2D" uid="uid://oj56dfyqal2e" path="res://art/level/cloud-sheet.png" id="1_y2txx"]
+[ext_resource type="PackedScene" uid="uid://bvxpe4og7ohkm" path="res://actors/pickups/water_pickup.tscn" id="1_yn6wr"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_luuhe"]
+resource_name = "Pickups"
+scenes/1/scene = ExtResource("1_yn6wr")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bj0e8"]
+resource_name = "Clouds"
 texture = ExtResource("1_y2txx")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -16,3 +22,4 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_bj0e8")
+sources/0 = SubResource("TileSetScenesCollectionSource_luuhe")

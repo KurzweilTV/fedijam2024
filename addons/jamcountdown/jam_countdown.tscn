@@ -22,7 +22,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_hj160")
 script = ExtResource("1_n7ugf")
-jam_title = "Gamejam"
+jam_title = "FediJam"
 year = 2024
 day = 1
 hour = 0
@@ -37,3 +37,4 @@ text = "Gamejam"
 
 [node name="CountdownLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+text = "24d 12h 17m 04s"
