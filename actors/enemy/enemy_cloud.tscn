@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvt001sktqgb5"]
+
+[ext_resource type="Texture2D" uid="uid://b6ctwr1c4l4yf" path="res://actors/enemy/art/enemy.png" id="1_7vp80"]
+[ext_resource type="Script" path="res://actors/enemy/enemy_cloud.gd" id="1_ic50c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqj48"]
+radius = 38.0
+height = 120.0
+
+[node name="EnemyCloud" type="Area2D"]
+script = ExtResource("1_ic50c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7vp80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_hqj48")
+debug_color = Color(0.95579, 0.156384, 0.365028, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

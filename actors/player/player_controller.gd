@@ -4,31 +4,34 @@ extends CharacterBody2D
 @export_range(100, 600, 5) var speed = 400.0
 @export_range(-1000, -400, 10) var jump_power = -650.0
 @export var total_jumps:int = 2
-@export_range(0, 1, .1) var cowboy_timer:float = 0.2
-@export var spawning:bool
 @export_category("Water Usage")
 @export var cost_to_jump:int = 2
+@export var cost_to_float:int = 2 #this is a multiplier of delta
 
 @onready var effect_animator: AnimationPlayer = %Animator
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var char_animator: AnimationPlayer = $CharAnimator
 @onready var float_effect: GPUParticles2D = %FloatEffect
 @onready var jump_effect:PackedScene = preload("res://actors/player/jump_effect.tscn")
+@onready var always_effect: GPUParticles2D = %"Always Effects"
 @onready var camera: Camera2D = $Camera2D
+@onready var death_effect: GPUParticles2D = $Effects/DeathEffect
 
 var jumps_remaining:int
+var spawning:bool
 
 func _ready() -> void:
+	get_tree().paused = false
 	spawning = true
 	jumps_remaining = total_jumps
 	effect_animator.play("spawn")
 	camera.enabled = true
+	Player.water = Player.starting_water
 
 # DEBUG FUNCTION
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_respawn"):
-		Messages.spawn_player.emit()
-		queue_free()
+		die()
 
 func _physics_process(delta: float) -> void:
 	if spawning:
@@ -49,8 +52,8 @@ func _physics_process(delta: float) -> void:
 			add_gravity(delta )
 		
 	# Slow fall when holding jump and falling
-	if Input.is_action_pressed("jump") and velocity.y > 0: #floating
-		Player.water -= delta * 2
+	if Input.is_action_pressed("jump") and velocity.y > 0 and able_to_jump(): #floating
+		Player.water -= delta * cost_to_float
 		velocity.y = lerp(velocity.y, 50.0, delta * 5)
 		float_effect.emitting = true
 	else:
@@ -77,6 +80,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide() #actually move
 
+func die() -> void:
+	death_effect.emitting = true
+	always_effect.emitting = false
+	sprite_2d.hide()
+	spawning = true
+	await get_tree().create_timer(death_effect.lifetime).timeout
+	Messages.spawn_player.emit()
+	queue_free()
+	
 func spawn_jump_effect() -> void:
 	Player.water -= cost_to_jump
 	var effect = jump_effect.instantiate()

@@ -144,6 +144,7 @@ script = ExtResource("1_mevqu")
 sprite_frames = SubResource("SpriteFrames_4qqd1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_3e1un")
 

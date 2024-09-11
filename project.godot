@@ -53,6 +53,7 @@ spawn=""
 [gui]
 
 theme/custom="res://ui/themes/cheerful.tres"
+theme/custom_font="res://assets/fonts/Kenney/Kenney Future.ttf"
 
 [input]
 
