@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq22dbbblrjwt"]
+
+[ext_resource type="Script" path="res://ui/popups/message_box.gd" id="1_4ihoh"]
+[ext_resource type="FontFile" uid="uid://d2i8xi6pwwhmp" path="res://assets/fonts/Suse/SUSE-Medium.ttf" id="2_grsfp"]
+
+[node name="MessageBox" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_4ihoh")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -86.0
+offset_right = 135.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_grsfp")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Here is some text that I am writing inside this little box to see how the game handles resizing my panels to fix the text."
+fit_content = true
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
