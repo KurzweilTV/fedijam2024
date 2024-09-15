@@ -138,6 +138,7 @@ turbulence_noise_scale = 4.362
 
 [node name="Checkpoint" type="Area2D"]
 z_index = -1
+position = Vector2(0, -31)
 script = ExtResource("1_mevqu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

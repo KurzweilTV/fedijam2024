@@ -1,15 +1,19 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ckrrgolceu4lu"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://ckrrgolceu4lu"]
 
 [ext_resource type="PackedScene" uid="uid://bvxpe4og7ohkm" path="res://actors/pickups/water_pickup.tscn" id="1_yn6wr"]
 [ext_resource type="PackedScene" uid="uid://mkxxguy5iagr" path="res://actors/spike/Spike.tscn" id="2_7yfya"]
+[ext_resource type="PackedScene" uid="uid://dophukp3mwbou" path="res://actors/checkpoint/flagpole.tscn" id="2_8bi5a"]
+[ext_resource type="PackedScene" uid="uid://b3w8yplom8yam" path="res://actors/spike/down_spike.tscn" id="3_awg0o"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_luuhe"]
 resource_name = "Pickups"
 scenes/1/scene = ExtResource("1_yn6wr")
+scenes/2/scene = ExtResource("2_8bi5a")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_iy6sf"]
 resource_name = "Enemies"
 scenes/1/scene = ExtResource("2_7yfya")
+scenes/2/scene = ExtResource("3_awg0o")
 
 [resource]
 tile_size = Vector2i(64, 64)

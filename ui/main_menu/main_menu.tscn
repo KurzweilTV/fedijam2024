@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbt62k38xlh86" path="res://ui/main_menu/menu_buttons.tscn" id="2_2fvvs"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="2_m5tbp"]
 [ext_resource type="Texture2D" uid="uid://up66cfwhrcj0" path="res://ui/main_menu/title_logo.jpg" id="2_nx5st"]
-[ext_resource type="PackedScene" uid="uid://dev7wnrwpvh2t" path="res://scenes/levels/prototype.tscn" id="3_b6yca"]
+[ext_resource type="PackedScene" uid="uid://cfg03qrcehfj6" path="res://scenes/levels/level_1.tscn" id="3_rqm0j"]
 [ext_resource type="PackedScene" uid="uid://v8ofk5aftia" path="res://ui/main_menu/options_screen.tscn" id="4_doaxe"]
 [ext_resource type="AudioStream" uid="uid://r6jgnws3dlfq" path="res://ui/sounds/switch8.ogg" id="6_d8fh5"]
 [ext_resource type="AudioStream" uid="uid://cfq6tjypuo31m" path="res://ui/sounds/OrchAmbient.mp3" id="7_dkxxa"]
@@ -182,7 +182,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_iqhwg")
 script = ExtResource("2_m5tbp")
-first_level = ExtResource("3_b6yca")
+first_level = ExtResource("3_rqm0j")
 
 [node name="CloudBG" type="TextureRect" parent="."]
 layout_mode = 1
@@ -234,6 +234,7 @@ libraries = {
 "": SubResource("AnimationLibrary_gv8jo")
 }
 autoplay = "fade_animation"
+speed_scale = 0.5
 
 [node name="OptionsScreen" parent="." instance=ExtResource("4_doaxe")]
 layout_mode = 1

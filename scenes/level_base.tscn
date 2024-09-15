@@ -1,0 +1,174 @@
+[gd_scene load_steps=10 format=3 uid="uid://crjrcyneqghmm"]
+
+[ext_resource type="Script" path="res://scenes/level_base.gd" id="1_c4qpi"]
+[ext_resource type="TileSet" uid="uid://6mm2u28vk5mb" path="res://art/CloudTiles/tileset_CloudTiles.tres" id="1_ly7xt"]
+[ext_resource type="TileSet" uid="uid://ckrrgolceu4lu" path="res://scenes/levels/prototype_tiletset.tres" id="2_7ivwl"]
+[ext_resource type="PackedScene" uid="uid://bxus7j5d5ls1q" path="res://scenes/player_spawn.tscn" id="3_75r80"]
+
+[sub_resource type="Gradient" id="Gradient_gtc1p"]
+offsets = PackedFloat32Array(0, 0.110672, 1)
+colors = PackedColorArray(0.462291, 0.462291, 0.462291, 1, 0.682299, 0.76975, 0.822305, 1, 0.0944997, 0.54799, 0.814662, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_negy6"]
+gradient = SubResource("Gradient_gtc1p")
+
+[sub_resource type="Animation" id="Animation_ctpnx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_1c5rf"]
+resource_name = "fade_animation"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gv8jo"]
+_data = {
+"RESET": SubResource("Animation_ctpnx"),
+"fade_animation": SubResource("Animation_1c5rf")
+}
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_c4qpi")
+
+[node name="Environment" type="CanvasModulate" parent="."]
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Environment"]
+position = Vector2(1993, -218)
+rotation = 0.991519
+color = Color(1, 1, 0.564706, 1)
+energy = 0.2
+shadow_color = Color(0.0117647, 0.223529, 0.34902, 0.129412)
+shadow_filter = 1
+height = 0.77
+max_distance = 200.0
+
+[node name="Background" type="Parallax2D" parent="."]
+z_index = -100
+scroll_scale = Vector2(0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+offset_left = 1208.0
+offset_top = -2.0
+offset_right = 2017.0
+offset_bottom = 1206.0
+rotation = 1.57079
+texture = SubResource("GradientTexture1D_negy6")
+metadata/_edit_lock_ = true
+
+[node name="Fader" type="ColorRect" parent="Background"]
+z_index = 100
+z_as_relative = false
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 1208.0
+offset_bottom = 812.0
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Fader"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_gv8jo")
+}
+
+[node name="Layers" type="Node2D" parent="."]
+
+[node name="Clouds" type="TileMapLayer" parent="Layers"]
+tile_set = ExtResource("1_ly7xt")
+
+[node name="Scenes" type="TileMapLayer" parent="Layers"]
+tile_set = ExtResource("2_7ivwl")
+
+[node name="Checkpoints" type="TileMapLayer" parent="Layers"]
+tile_set = ExtResource("2_7ivwl")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("3_75r80")]
