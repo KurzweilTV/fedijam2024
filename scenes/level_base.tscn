@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://crjrcyneqghmm"]
+[gd_scene load_steps=11 format=3 uid="uid://crjrcyneqghmm"]
 
 [ext_resource type="Script" path="res://scenes/level_base.gd" id="1_c4qpi"]
 [ext_resource type="TileSet" uid="uid://6mm2u28vk5mb" path="res://art/CloudTiles/tileset_CloudTiles.tres" id="1_ly7xt"]
 [ext_resource type="TileSet" uid="uid://ckrrgolceu4lu" path="res://scenes/levels/prototype_tiletset.tres" id="2_7ivwl"]
 [ext_resource type="PackedScene" uid="uid://bxus7j5d5ls1q" path="res://scenes/player_spawn.tscn" id="3_75r80"]
+[ext_resource type="AudioStream" uid="uid://b2tafytogl4mg" path="res://sounds/music/mx_song1.ogg" id="5_bp4s1"]
 
 [sub_resource type="Gradient" id="Gradient_gtc1p"]
 offsets = PackedFloat32Array(0, 0.110672, 1)
@@ -172,3 +173,8 @@ tile_set = ExtResource("2_7ivwl")
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_75r80")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bp4s1")
+autoplay = true
+bus = &"Music"

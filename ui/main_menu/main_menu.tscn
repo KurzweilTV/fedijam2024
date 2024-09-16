@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://i460doofu8ra"]
+[gd_scene load_steps=18 format=3 uid="uid://i460doofu8ra"]
 
 [ext_resource type="Theme" uid="uid://bm4coof7xuoxa" path="res://ui/themes/cheerful.tres" id="1_iqhwg"]
 [ext_resource type="PackedScene" uid="uid://dbt62k38xlh86" path="res://ui/main_menu/menu_buttons.tscn" id="2_2fvvs"]
@@ -14,6 +14,13 @@ colors = PackedColorArray(0.111154, 0.573028, 0.848402, 1, 0.0117647, 0.223529, 
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hp6wh"]
 gradient = SubResource("Gradient_7vmtf")
+
+[sub_resource type="GDScript" id="GDScript_fei2e"]
+script/source = "extends ColorRect
+
+func _init() -> void:
+	visible = true
+"
 
 [sub_resource type="Animation" id="Animation_ctpnx"]
 length = 0.001
@@ -220,6 +227,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Fader" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,6 +236,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_default_cursor_shape = 2
+script = SubResource("GDScript_fei2e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fader"]
 libraries = {
@@ -245,6 +254,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 1200.0
 offset_right = 1200.0
+
+[node name="MusicSlider" parent="OptionsScreen/MarginContainer/PanelContainer/VBoxContainer/MuiscVol/HBox" index="1"]
+value = 0.3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OptionsScreen"]
 libraries = {
@@ -264,7 +276,6 @@ bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="MenuSounds"]
 stream = ExtResource("7_dkxxa")
-volume_db = -10.0
 autoplay = true
 bus = &"Music"
 

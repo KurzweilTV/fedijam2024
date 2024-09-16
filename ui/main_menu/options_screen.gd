@@ -9,7 +9,7 @@ extends Control
 @onready var sfx_bus := AudioServer.get_bus_index("SFX")
 
 @export var master_value:float = 0.8
-@export var music_value:float = 0.5
+@export var music_value:float = 0.3
 @export var sfx_value:float = 0.5
 
 
