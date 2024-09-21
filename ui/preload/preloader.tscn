@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq0yl6741c1c6"]
+
+[ext_resource type="Script" path="res://ui/preload/preloader.gd" id="1_12pom"]
+[ext_resource type="FontFile" uid="uid://becvdqh65vqm8" path="res://assets/fonts/Kenney/Kenney Blocks.ttf" id="1_pyayd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8wq1h"]
+font = ExtResource("1_pyayd")
+font_size = 31
+font_color = Color(0, 0, 0, 1)
+
+[node name="Preloader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12pom")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -209.0
+offset_top = -48.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Loading..."
+label_settings = SubResource("LabelSettings_8wq1h")

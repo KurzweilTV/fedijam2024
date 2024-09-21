@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dophukp3mwbou"]
+[gd_scene load_steps=28 format=3 uid="uid://dophukp3mwbou"]
 
 [ext_resource type="Texture2D" uid="uid://80n5w8w0sbjb" path="res://actors/checkpoint/sprites/flagpole1.png" id="1_foke2"]
 [ext_resource type="Script" path="res://actors/checkpoint/flagpole.gd" id="1_mevqu"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c6wjoceqp6p8n" path="res://actors/checkpoint/sprites/flagpole20.png" id="21_nl8na"]
 [ext_resource type="Texture2D" uid="uid://dp8ahuuk4t7gh" path="res://actors/checkpoint/sprites/flagpole21.png" id="22_qwum3"]
 [ext_resource type="Texture2D" uid="uid://fyyxipl1iqf8" path="res://actors/checkpoint/sprites/flagpole22.png" id="23_ptejp"]
+[ext_resource type="Material" uid="uid://kwu0h4cfqsyb" path="res://particles/CheckpointStars.tres" id="24_loeke"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4qqd1"]
 animations = [{
@@ -103,39 +104,6 @@ animations = [{
 radius = 17.0
 height = 108.0
 
-[sub_resource type="Curve" id="Curve_cdwe5"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.621277, 0.752809), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_7jjjj"]
-curve = SubResource("Curve_cdwe5")
-
-[sub_resource type="Gradient" id="Gradient_xtitb"]
-offsets = PackedFloat32Array(0, 0.205742, 0.401914, 0.583732, 0.842105, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.45098, 0.203922, 1, 1, 1, 0.4, 1, 0, 1, 0, 1, 0.415686, 0, 1, 1, 0.828143, 0.705882, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dkct4"]
-gradient = SubResource("Gradient_xtitb")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1f56n"]
-particle_flag_disable_z = true
-angle_min = 1.07288e-05
-angle_max = 360.0
-direction = Vector3(0, -1, 0)
-spread = 180.0
-initial_velocity_min = 200.0
-initial_velocity_max = 250.0
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = 187.83
-gravity = Vector3(0, 98, 0)
-scale_min = 0.05
-scale_max = 0.2
-color_ramp = SubResource("GradientTexture1D_dkct4")
-color_initial_ramp = SubResource("GradientTexture1D_dkct4")
-alpha_curve = SubResource("CurveTexture_7jjjj")
-turbulence_enabled = true
-turbulence_noise_scale = 4.362
-
 [node name="Checkpoint" type="Area2D"]
 z_index = -1
 position = Vector2(0, -31)
@@ -153,7 +121,7 @@ shape = SubResource("CapsuleShape2D_3e1un")
 position = Vector2(0, -39)
 emitting = false
 amount = 40
-process_material = SubResource("ParticleProcessMaterial_1f56n")
+process_material = ExtResource("24_loeke")
 texture = ExtResource("9_efp27")
 lifetime = 3.0
 one_shot = true

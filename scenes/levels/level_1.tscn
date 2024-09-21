@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=4 uid="uid://cfg03qrcehfj6"]
+[gd_scene load_steps=7 format=4 uid="uid://cfg03qrcehfj6"]
 
 [ext_resource type="PackedScene" uid="uid://crjrcyneqghmm" path="res://scenes/level_base.tscn" id="1_dy72a"]
 [ext_resource type="PackedScene" uid="uid://bvt001sktqgb5" path="res://actors/enemy/enemy_cloud.tscn" id="2_t8gkf"]
+[ext_resource type="PackedScene" uid="uid://caqyp7pumwg03" path="res://scenes/up_wind.tscn" id="3_c206c"]
+[ext_resource type="Script" path="res://scenes/levels/level_end.gd" id="5_dy0c4"]
+[ext_resource type="PackedScene" uid="uid://dev7wnrwpvh2t" path="res://scenes/levels/prototype.tscn" id="6_qeg6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nll3m"]
+size = Vector2(960, 20)
 
 [node name="LevelBase" instance=ExtResource("1_dy72a")]
 
@@ -18,7 +24,7 @@ tile_map_data = PackedByteArray("AAAAAAwAAAABAAAAAAABAAwAAAABAAAAAAACAAwAAAABAAA
 [node name="Scenes" parent="Layers" index="1"]
 editor_description = "Scenes layer will reset when the player respawns
 "
-tile_map_data = PackedByteArray("AAAcAAwAAQAAAAAAAQAdAAwAAQAAAAAAAQAeAAwAAQAAAAAAAQAfAAwAAQAAAAAAAQAgAAwAAQAAAAAAAQAhAAwAAQAAAAAAAQAiAAwAAQAAAAAAAQAjAAwAAQAAAAAAAQAkAAwAAQAAAAAAAQAlAAwAAQAAAAAAAQAmAAwAAQAAAAAAAQAnAAwAAQAAAAAAAQAoAAwAAQAAAAAAAQAuAAwAAQAAAAAAAQAvAAwAAQAAAAAAAQAwAAwAAQAAAAAAAQAxAAwAAQAAAAAAAQAyAAwAAQAAAAAAAQAzAAwAAQAAAAAAAQA6ABAAAQAAAAAAAQA7ABAAAQAAAAAAAQA8ABAAAQAAAAAAAQA9ABAAAQAAAAAAAQA+ABAAAQAAAAAAAQA/ABAAAQAAAAAAAQBEABAAAQAAAAAAAQBFABAAAQAAAAAAAQBGABAAAQAAAAAAAQBHABAAAQAAAAAAAQBIABAAAQAAAAAAAQBJABAAAQAAAAAAAQAJAAoAAAAAAAAAAQAMAAsAAAAAAAAAAQANAAsAAAAAAAAAAQAOAAsAAAAAAAAAAQAPAAsAAAAAAAAAAQAVAAYAAAAAAAAAAQAWAAYAAAAAAAAAAQAXAAYAAAAAAAAAAQAYAAYAAAAAAAAAAQAeAAcAAAAAAAAAAQAfAAYAAAAAAAAAAQAhAAUAAAAAAAAAAQAgAAUAAAAAAAAAAQAiAAUAAAAAAAAAAQAjAAUAAAAAAAAAAQAkAAYAAAAAAAAAAQAlAAcAAAAAAAAAAQAmAAgAAAAAAAAAAQAnAAkAAAAAAAAAAQAoAAoAAAAAAAAAAQBBAAgAAAAAAAAAAQBCAAgAAAAAAAAAAQBDAAsAAQAAAAAAAQBLAAsAAQAAAAAAAQBMAAsAAQAAAAAAAQBPAAsAAQAAAAAAAQBQAAsAAQAAAAAAAQBSAAsAAQAAAAAAAQBTAAsAAQAAAAAAAQBUAAsAAQAAAAAAAQBVAAsAAQAAAAAAAQBWAAsAAQAAAAAAAQBZAAsAAQAAAAAAAQBaAAsAAQAAAAAAAQBbAAsAAQAAAAAAAQBcAAsAAQAAAAAAAQBdAAsAAQAAAAAAAQBeAAsAAQAAAAAAAQBfAAsAAQAAAAAAAQBgAAsAAQAAAAAAAQBhAAsAAQAAAAAAAQBiAAsAAQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAcAAwAAQAAAAAAAQAdAAwAAQAAAAAAAQAeAAwAAQAAAAAAAQAfAAwAAQAAAAAAAQAgAAwAAQAAAAAAAQAhAAwAAQAAAAAAAQAiAAwAAQAAAAAAAQAjAAwAAQAAAAAAAQAkAAwAAQAAAAAAAQAlAAwAAQAAAAAAAQAmAAwAAQAAAAAAAQAnAAwAAQAAAAAAAQAoAAwAAQAAAAAAAQAuAAwAAQAAAAAAAQAvAAwAAQAAAAAAAQAwAAwAAQAAAAAAAQAxAAwAAQAAAAAAAQAyAAwAAQAAAAAAAQAzAAwAAQAAAAAAAQA6ABAAAQAAAAAAAQA7ABAAAQAAAAAAAQA8ABAAAQAAAAAAAQA9ABAAAQAAAAAAAQA+ABAAAQAAAAAAAQA/ABAAAQAAAAAAAQBEABAAAQAAAAAAAQBFABAAAQAAAAAAAQBGABAAAQAAAAAAAQBHABAAAQAAAAAAAQBIABAAAQAAAAAAAQBJABAAAQAAAAAAAQAJAAoAAAAAAAAAAQAMAAsAAAAAAAAAAQANAAsAAAAAAAAAAQAOAAsAAAAAAAAAAQAPAAsAAAAAAAAAAQAVAAYAAAAAAAAAAQAWAAYAAAAAAAAAAQAXAAYAAAAAAAAAAQAYAAYAAAAAAAAAAQAeAAcAAAAAAAAAAQAfAAYAAAAAAAAAAQAhAAUAAAAAAAAAAQAgAAUAAAAAAAAAAQAiAAUAAAAAAAAAAQAjAAUAAAAAAAAAAQAkAAYAAAAAAAAAAQAlAAcAAAAAAAAAAQAmAAgAAAAAAAAAAQAnAAkAAAAAAAAAAQAoAAoAAAAAAAAAAQBBAAgAAAAAAAAAAQBCAAgAAAAAAAAAAQBDAAsAAQAAAAAAAQBLAAsAAQAAAAAAAQBMAAsAAQAAAAAAAQBPAAsAAQAAAAAAAQBQAAsAAQAAAAAAAQBTAAsAAQAAAAAAAQBUAAsAAQAAAAAAAQBXAAsAAQAAAAAAAQBYAAsAAQAAAAAAAQBbAAsAAQAAAAAAAQBcAAsAAQAAAAAAAQA=")
 
 [node name="Checkpoints" parent="Layers" index="2"]
 tile_map_data = PackedByteArray("AAASAAgAAAAAAAAAAgBBAAsAAAAAAAAAAgA=")
@@ -31,5 +37,95 @@ endpoint = NodePath("Marker2D")
 position = Vector2(-273, 0)
 gizmo_extents = 55.5
 
+[node name="Cloud2" parent="Enemies" index="1" node_paths=PackedStringArray("endpoint") instance=ExtResource("2_t8gkf")]
+position = Vector2(4862, 604)
+endpoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Enemies/Cloud2" index="2"]
+position = Vector2(1028, 0)
+gizmo_extents = 61.9
+
 [node name="PlayerSpawn" parent="." index="4" groups=["spawn"]]
-position = Vector2(243, 716)
+position = Vector2(72, 716)
+
+[node name="Music" parent="." index="5"]
+volume_db = -5.0
+
+[node name="UpWind" parent="." index="6" instance=ExtResource("3_c206c")]
+
+[node name="LevelEnd" type="Area2D" parent="." index="7"]
+script = ExtResource("5_dy0c4")
+next_level = ExtResource("6_qeg6e")
+
+[node name="LevelEndDetector" type="CollisionShape2D" parent="LevelEnd" index="0"]
+position = Vector2(7141, -9)
+shape = SubResource("RectangleShape2D_nll3m")
+debug_color = Color(0.980349, 0, 0.380419, 0.42)
+
+[connection signal="body_entered" from="Layers/Scenes/Spike" to="Layers/Scenes/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61951" to="Layers/Scenes/@Area2D@61951" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61952" to="Layers/Scenes/@Area2D@61952" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61953" to="Layers/Scenes/@Area2D@61953" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61954" to="Layers/Scenes/@Area2D@61954" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61955" to="Layers/Scenes/@Area2D@61955" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61956" to="Layers/Scenes/@Area2D@61956" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61957" to="Layers/Scenes/@Area2D@61957" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61958" to="Layers/Scenes/@Area2D@61958" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61959" to="Layers/Scenes/@Area2D@61959" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61960" to="Layers/Scenes/@Area2D@61960" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61961" to="Layers/Scenes/@Area2D@61961" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61962" to="Layers/Scenes/@Area2D@61962" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61963" to="Layers/Scenes/@Area2D@61963" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61964" to="Layers/Scenes/@Area2D@61964" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61965" to="Layers/Scenes/@Area2D@61965" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61966" to="Layers/Scenes/@Area2D@61966" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61967" to="Layers/Scenes/@Area2D@61967" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61968" to="Layers/Scenes/@Area2D@61968" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61969" to="Layers/Scenes/@Area2D@61969" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61970" to="Layers/Scenes/@Area2D@61970" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61971" to="Layers/Scenes/@Area2D@61971" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61972" to="Layers/Scenes/@Area2D@61972" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61973" to="Layers/Scenes/@Area2D@61973" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61974" to="Layers/Scenes/@Area2D@61974" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61975" to="Layers/Scenes/@Area2D@61975" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61976" to="Layers/Scenes/@Area2D@61976" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61977" to="Layers/Scenes/@Area2D@61977" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61978" to="Layers/Scenes/@Area2D@61978" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61979" to="Layers/Scenes/@Area2D@61979" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61980" to="Layers/Scenes/@Area2D@61980" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/WaterPickup" to="Layers/Scenes/WaterPickup" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61981" to="Layers/Scenes/@Area2D@61981" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61982" to="Layers/Scenes/@Area2D@61982" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61983" to="Layers/Scenes/@Area2D@61983" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61984" to="Layers/Scenes/@Area2D@61984" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61985" to="Layers/Scenes/@Area2D@61985" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61986" to="Layers/Scenes/@Area2D@61986" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61987" to="Layers/Scenes/@Area2D@61987" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61988" to="Layers/Scenes/@Area2D@61988" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61989" to="Layers/Scenes/@Area2D@61989" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61990" to="Layers/Scenes/@Area2D@61990" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61991" to="Layers/Scenes/@Area2D@61991" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61992" to="Layers/Scenes/@Area2D@61992" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61993" to="Layers/Scenes/@Area2D@61993" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61994" to="Layers/Scenes/@Area2D@61994" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61995" to="Layers/Scenes/@Area2D@61995" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61996" to="Layers/Scenes/@Area2D@61996" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61997" to="Layers/Scenes/@Area2D@61997" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61998" to="Layers/Scenes/@Area2D@61998" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@61999" to="Layers/Scenes/@Area2D@61999" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62000" to="Layers/Scenes/@Area2D@62000" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62001" to="Layers/Scenes/@Area2D@62001" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62002" to="Layers/Scenes/@Area2D@62002" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62003" to="Layers/Scenes/@Area2D@62003" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62004" to="Layers/Scenes/@Area2D@62004" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62005" to="Layers/Scenes/@Area2D@62005" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62006" to="Layers/Scenes/@Area2D@62006" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62007" to="Layers/Scenes/@Area2D@62007" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62008" to="Layers/Scenes/@Area2D@62008" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62009" to="Layers/Scenes/@Area2D@62009" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62010" to="Layers/Scenes/@Area2D@62010" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62011" to="Layers/Scenes/@Area2D@62011" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Scenes/@Area2D@62012" to="Layers/Scenes/@Area2D@62012" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Checkpoints/Checkpoint" to="Layers/Checkpoints/Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="Layers/Checkpoints/@Area2D@62013" to="Layers/Checkpoints/@Area2D@62013" method="_on_body_entered"]
+[connection signal="body_entered" from="LevelEnd" to="LevelEnd" method="_on_body_entered"]

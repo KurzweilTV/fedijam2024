@@ -13,7 +13,7 @@ config_version=5
 config/name="FediJam"
 config/version="0.1"
 config/tags=PackedStringArray("gamejam")
-run/main_scene="res://ui/intros/godot_intro.tscn"
+run/main_scene="res://ui/preload/preloader.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 GameManager="*res://globals/GameManager.gd"
 Player="*res://globals/Player.gd"
 Messages="*res://globals/Messages.gd"
+ParticleCache="*res://globals/ParticleCache.gd"
 
 [debug]
 

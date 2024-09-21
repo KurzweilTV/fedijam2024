@@ -11,5 +11,6 @@ func _ready() -> void:
 	Messages.spawn_player.connect(respawn_items)
 	fader.play("fade_animation")
 
+
 func respawn_items() -> void:
 	scenes.tile_map_data = default_item_spawns

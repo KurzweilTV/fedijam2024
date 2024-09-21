@@ -19,6 +19,7 @@ extends CharacterBody2D
 
 var jumps_remaining:int
 var spawning:bool
+var is_in_wind:bool
 
 func _ready() -> void:
 	get_tree().paused = false
@@ -103,5 +104,15 @@ func able_to_jump() -> bool:
 		return true
 	else: return false
 
+func enter_wind() -> void:
+	is_in_wind = true
+	
+func exit_wind() -> void:
+	is_in_wind = false
+	
+
 func add_gravity(delta) -> void:
-	velocity += get_gravity() * delta
+	if is_in_wind:
+		velocity -= (get_gravity() * delta) / 2
+	else:
+		velocity += get_gravity() * delta
