@@ -19,9 +19,3 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_afvef")
 one_way_collision = true
 debug_color = Color(0.906361, 0.138347, 0.662603, 0.42)
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-modulate = Color(1, 1, 1, 0.172549)
-show_behind_parent = true
-position = Vector2(0.500015, 0)
-scale = Vector2(40.95, 9.3)

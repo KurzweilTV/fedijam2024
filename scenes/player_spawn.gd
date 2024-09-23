@@ -1,6 +1,6 @@
 class_name PlayerSpawner extends Marker2D
 
-const Player_Scene = preload("res://actors/player/Player.tscn")
+const Player_Scene = preload("res://actors/player/player.tscn")
 
 func _ready() -> void:
 	Messages.spawn_player.connect(spawn_player)

@@ -17,9 +17,9 @@ func _ready() -> void:
 func start_tween():
 	var tween = create_tween()
 	tween.set_loops().set_parallel(false)
-	tween.tween_property(self, "position", end_position, duration / 2.0).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "position", end_position, duration / 2.0).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(self, "visible", true, wait_time) #HACK: Lazy way to make the platfrom wait
-	tween.tween_property(self, "position", start_position, duration / 2.0).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "position", start_position, duration / 2.0).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(self, "visible", true, wait_time)
 
 	

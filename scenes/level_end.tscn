@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdtra8q228o6v"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_end.gd" id="1_m5ao3"]
+[ext_resource type="PackedScene" uid="uid://cq4p2mjj0be2f" path="res://scenes/levels/level_2.tscn" id="2_ycq03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nll3m"]
+size = Vector2(960, 189)
+
+[node name="LevelEnd" type="Area2D"]
+script = ExtResource("1_m5ao3")
+next_level = ExtResource("2_ycq03")
+
+[node name="LevelEndDetector" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nll3m")
+debug_color = Color(0.980349, 0, 0.380419, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

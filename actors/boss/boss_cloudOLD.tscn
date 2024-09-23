@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnvx75n6ust1b"]
+
+[ext_resource type="Script" path="res://boss_cloud.gd" id="1_y8hna"]
+[ext_resource type="Texture2D" uid="uid://b6ctwr1c4l4yf" path="res://actors/enemy/art/enemy.png" id="2_4ho3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtbpl"]
+size = Vector2(151, 115)
+
+[node name="BossCloud" type="Area2D"]
+script = ExtResource("1_y8hna")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_4ho3w")
+
+[node name="AttackTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_mtbpl")
+
+[connection signal="timeout" from="AttackTimer" to="." method="fire_projectile"]

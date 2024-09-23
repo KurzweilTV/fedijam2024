@@ -110,7 +110,9 @@ func enter_wind() -> void:
 func exit_wind() -> void:
 	is_in_wind = false
 	
-
+func disable_camera() -> void:
+	camera.enabled = false
+	
 func add_gravity(delta) -> void:
 	if is_in_wind:
 		velocity -= (get_gravity() * delta) / 2

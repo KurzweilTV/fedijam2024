@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddqu5tsq8mw2u"]
+
+[ext_resource type="PackedScene" uid="uid://bvt001sktqgb5" path="res://actors/enemy/enemy_cloud.tscn" id="1_7lsun"]
+
+[node name="EnemyCloud" instance=ExtResource("1_7lsun")]
+scale = Vector2(1.5, 1.5)
+
+[node name="AttackTimer" parent="." index="2"]
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="fire_projectile"]

@@ -232,9 +232,12 @@ tile_set = ExtResource("2_7ivwl")
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="PlayerSpawn" parent="." instance=ExtResource("3_75r80")]
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="PlayerSpawn" parent="." groups=["spawn"] instance=ExtResource("3_75r80")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_bp4s1")
+volume_db = -5.0
 autoplay = true
 bus = &"Music"
