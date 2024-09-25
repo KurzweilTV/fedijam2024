@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cq4p2mjj0be2f" path="res://scenes/levels/level_2.tscn" id="2_ycq03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nll3m"]
-size = Vector2(960, 189)
+size = Vector2(1532, 189)
 
 [node name="LevelEnd" type="Area2D"]
 script = ExtResource("1_m5ao3")

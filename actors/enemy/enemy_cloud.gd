@@ -6,7 +6,7 @@ class_name enemy extends Area2D
 @export var duration:float = 2.0
 @export var wait_time:float = 1.0
 @export_category("Boss")
-@export var projectile:PackedScene = null
+@export var bullet:PackedScene = null
 @export_range(0.1, 2, .1) var min_attack_speed = 0.1
 @export_range(0.1, 2, .1) var max_attack_speed = 1.0
 
@@ -32,9 +32,9 @@ func start_tween():
 
 
 func fire_projectile() -> void:
-	if projectile:
+	if bullet:
 		attack_timer.wait_time = randf_range(min_attack_speed, max_attack_speed)
-		var bolt_instance = projectile.instantiate()
+		var bolt_instance = bullet.instantiate()
 		bolt_instance.global_position = global_position
 		get_node("/root/LevelBase/Enemies").add_child(bolt_instance)
 		attack_timer.start()
