@@ -98,7 +98,6 @@ position = Vector2(8573.18, -36.7811)
 position = Vector2(13177, 734)
 scale = Vector2(1.5, 1.5)
 
-[node name="LevelEnd" parent="." index="8" instance=ExtResource("6_lt06i")]
 position = Vector2(13659, -537)
 
 [connection signal="body_entered" from="Layers/Scenes/Spike" to="Layers/Scenes/Spike" method="_on_body_entered"]

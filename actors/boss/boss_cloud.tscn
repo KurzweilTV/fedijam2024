@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddqu5tsq8mw2u"]
+[gd_scene load_steps=3 format=3 uid="uid://ddqu5tsq8mw2u"]
 
 [ext_resource type="PackedScene" uid="uid://bvt001sktqgb5" path="res://actors/enemy/enemy_cloud.tscn" id="1_7lsun"]
+[ext_resource type="PackedScene" uid="uid://6lo6xo26w4s4" path="res://actors/boss/bolt.tscn" id="2_jabno"]
 
 [node name="EnemyCloud" instance=ExtResource("1_7lsun")]
 scale = Vector2(1.5, 1.5)
+bullet = ExtResource("2_jabno")
 
 [node name="AttackTimer" parent="." index="2"]
 one_shot = true
