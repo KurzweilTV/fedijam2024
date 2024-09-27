@@ -17,9 +17,16 @@ gradient = SubResource("Gradient_gtc1p")
 
 [sub_resource type="GDScript" id="GDScript_hbyty"]
 script/source = "extends ColorRect
+@onready var anim_player: AnimationPlayer = %AnimationPlayer
 
 func _init() -> void:
 	visible = true
+
+func fade_in() -> void:
+	anim_player.play(\"fade_animation\")
+
+func fade_out() -> void:
+	anim_player.play_backwards(\"fade_animation\")
 "
 
 [sub_resource type="Animation" id="Animation_ctpnx"]

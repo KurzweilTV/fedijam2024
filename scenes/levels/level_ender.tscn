@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://deal1ce2pdvut"]
+
+[sub_resource type="GDScript" id="GDScript_8lplf"]
+resource_name = "LevelEnder"
+script/source = "extends Area2D
+
+@export var next_level:PackedScene
+@export var fader:ColorRect
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"player\"):
+		fader.fade_out()
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_packed(next_level)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8bem"]
+size = Vector2(1032, 20)
+
+[node name="LevelEnder" type="Area2D"]
+script = SubResource("GDScript_8lplf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k8bem")
+debug_color = Color(0.963138, 1.34766e-06, 0.500482, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
