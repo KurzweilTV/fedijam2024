@@ -5,8 +5,12 @@ extends Control
 @onready var hover: AudioStreamPlayer = $MenuSounds/Hover
 @onready var fader: AnimationPlayer = $Fader/AnimationPlayer
 
-@export var first_level:PackedScene = preload("res://scenes/levels/level_1.tscn")
+var first_level: PackedScene = load("res://scenes/levels/level_1.tscn")
 
+func _ready() -> void:
+	#Metrics.push_metric("game_started", 1)
+	pass
+	
 func play_hover():
 	hover.play()
 

@@ -82,6 +82,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide() #actually move
 
 func die() -> void:
+	#Metrics.push_metric("player_died", 1)
 	death_effect.emitting = true
 	always_effect.emitting = false
 	sprite_2d.hide()
@@ -90,7 +91,9 @@ func die() -> void:
 	Messages.spawn_player.emit()
 	queue_free()
 	
+	
 func spawn_jump_effect() -> void:
+	#Metrics.push_metric("player_jumped", 1)
 	Player.water -= cost_to_jump
 	var effect = jump_effect.instantiate()
 	effect.position = global_position
